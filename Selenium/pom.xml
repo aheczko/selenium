@@ -12,6 +12,9 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <logback.version>1.4.6</logback.version>
+        <logback.jakcson.verion>0.1.5</logback.jakcson.verion>
+        <logstash.version>7.3</logstash.version>
     </properties>
 
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
@@ -46,7 +49,6 @@
             <version>5.7.0</version>
         </dependency>
 
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -73,9 +75,23 @@
             <version>${logstash.version}</version>
         </dependency>
 
-        <logback.version>1.4.6</logback.version>
-        <logback.jakcson.verion>0.1.5</logback.jakcson.verion>
-        <logstash.version>7.3</logstash.version>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.24.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.18.1</version>
+        </dependency>
+
+
+
     </dependencies>
 
 

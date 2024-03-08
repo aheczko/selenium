@@ -1,109 +1,66 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import bases.BaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.Select;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class FillFormTest {
-    private String appurl="http://www.automationpractice.pl/";
-    private String browsername ="chrome";
-    //deklaracja sterownika do przeglądarki
-    private WebDriver driver;
-    private final boolean headlessBrowser = false; //true - bez widocznej przeglądarki  false - przeglądarka jest widoczna.
 
-
+public class FillFormTest extends BaseTest {
+    protected static Logger log = LoggerFactory.getLogger(FillFormTest.class);
     @Test
     @DisplayName("Contact US form")
     void fillFormForAutomationPractice(){
 
-        driver = getDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get(appurl);
-        //Krok1: Click Contac US
-        WebElement contactLink = driver.findElement(By.cssSelector("#contact-link > a"));
-        contactLink.click();
+
+
         WebElement dropDownList = driver.findElement(By.id("id_contact"));
         dropDownList.click();
+        log.info("Krok 2: kliknięcie listy rozwijanej");
+
         Select select = new Select(dropDownList);
         select.selectByVisibleText("Webmaster");
+        log.info("Krok 3: wybranie pozycji z listy rozwijanej");
+
         WebElement email = driver.findElement(By.cssSelector("#email"));
         email.sendKeys("aheczko87@gmail.com");
+        log.info("Krok 4: wprowadzenie adresu e-mail.");
+
         WebElement order = driver.findElement(By.cssSelector("#id_order"));
         order.sendKeys("Selenium testowanie selenium");
+        log.info("Krok 5: wprowadzenie tytułu wiadomości");
+
         WebElement textMsg = driver.findElement(By.cssSelector("#message"));
         textMsg.sendKeys("testowy tekst wiadomości e mail");
+        log.info("Krok 6: wprowadzenie testowej wiadomości");
+
         File uploadFile = new File("c://opt//info.txt");
         //WebElement fileInput = driver.findElement(By.cssSelector("input[type=file]"));
         WebElement fileInput = driver.findElement(By.cssSelector("#fileUpload"));
         fileInput.sendKeys(uploadFile.getAbsolutePath());
+        log.info("Krok 7: dodanie załącznika.");
+
         WebElement sendBtn = driver.findElement(By.cssSelector("#submitMessage > span"));
         sendBtn.click();
+        log.info("Krok 8: wysłanie wiadomości.");
 
-
-
-        //Krok 8: assert
         String expectedMessage ="Your message has been successfully sent to our team.";
         WebElement succesMsg = driver.findElement(By.className("alert"));
         String actualMessage = succesMsg.getText();
         assertThat(actualMessage).contains(expectedMessage);
+        log.info("Sprawdzenie asercji.");
 
-
-
-
-        driver.quit();
     }
     //"Your message has been successfully sent to our team."
 
-    private WebDriver getDriver()
-    {
-        switch (this.browsername){
-            case "edge"-> {
-                EdgeOptions options = new EdgeOptions();
-                WebDriverManager.edgedriver().setup();
-                options.addArguments("--start-maximized");
-                options.addArguments("--remote-allow-origins=*");
-                if (this.headlessBrowser) {
-                    options.addArguments("--headless");
-                }
-                driver = new EdgeDriver(options);
-            }
-            case "chrome" -> {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                WebDriverManager.chromedriver().setup();
-                chromeOptions.addArguments("--start-maximized");
-                chromeOptions.addArguments("--remote-allow-origins=*");
-                if (this.headlessBrowser) {
-                    chromeOptions.addArguments("--headless");
-                }
-                driver = new ChromeDriver(chromeOptions);
-            }
-            case "firefox" -> {
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                WebDriverManager.firefoxdriver().setup();
-                firefoxOptions.addArguments("start-maximized");
-                if (this.headlessBrowser) {
-                    firefoxOptions.addArguments("--headless");
-                }
-                driver = new FirefoxDriver(firefoxOptions);
-            }
-            default -> throw new UnsupportedOperationException("Unsupported browser selected.");
-        }
-        return  driver;
-    }
+
 }

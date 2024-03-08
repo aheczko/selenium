@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.ContactUsPage;
 import pages.MainPage;
+import pages.MessagePage;
 
 public class FillFormPlusPageObjectPatternTest extends BaseTest {
     @Test
@@ -20,7 +21,10 @@ public class FillFormPlusPageObjectPatternTest extends BaseTest {
         contactPage.sendTextToMessageEmail("Testowy tekst wiadomości e mail");
         contactPage.choosenFileInModal("c://opt//info.txt");
         contactPage.clickTheButtonSubmit();
-        contactPage.assertThatAfterSentMessageIsOk("Your message has been successfully sent to our team.");
+
+        MessagePage msgPage = new MessagePage(driver);
+        msgPage.assertThatAfterSentMessageIsOk("Your message has been successfully sent to our team.");
+
 
     }
 }

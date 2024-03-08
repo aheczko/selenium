@@ -33,8 +33,7 @@ public class ContactUsPage extends BasePage {
     private WebElement fileUpload;
     @FindBy(css ="#submitMessage > span")
     private WebElement submitMessageBtn;
-    @FindBy(className = "alert")
-    private WebElement alertAfterSendMessage;
+
 
 
 
@@ -82,13 +81,7 @@ public class ContactUsPage extends BasePage {
         log.info("Krok 8: wysłanie wiadomości.");
     }
 
-    public void assertThatAfterSentMessageIsOk(String expectedMessage)
-    {
-        String actualMessage = alertAfterSendMessage.getText();
-        assertThat(actualMessage).contains(expectedMessage);
-        log.info("Sprawdzenie asercji.");
 
-    }
 
 
 

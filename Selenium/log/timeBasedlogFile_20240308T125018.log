@@ -1,0 +1,11 @@
+1005 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+1047 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\adrian.heczko\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+6919 [main] INFO  tests.FillFormTest - Krok 1: kliknięcie Contact US
+6970 [main] INFO  tests.FillFormTest - Krok 2: kliknięcie listy rozwijanej SubjectHeading
+7075 [main] INFO  tests.FillFormTest - Krok 3: wybranie pozycji z listy rozwijanej
+7157 [main] INFO  tests.FillFormTest - Krok 4: wprowadzenie adresu e-mail.
+7234 [main] INFO  tests.FillFormTest - Krok 5: wprowadzenie tytułu wiadomości
+7308 [main] INFO  tests.FillFormTest - Krok 6: wprowadzenie testowej wiadomości
+7365 [main] INFO  tests.FillFormTest - Krok 7: dodanie załącznika.
+14903 [main] INFO  tests.FillFormTest - Krok 8: wysłanie wiadomości.
+14999 [main] INFO  tests.FillFormTest - Sprawdzenie asercji.

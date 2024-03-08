@@ -1,0 +1,4 @@
+742 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+794 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\adrian.heczko\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+4790 [main] INFO  tests.FillFormTest - Krok 1: kliknięcie Contact US
+4840 [main] INFO  tests.FillFormTest - Krok 2: kliknięcie listy rozwijanej
